@@ -1,0 +1,7 @@
+ion-icon {
+    font-size: 32px;
+    --ionicon-stroke-width: 24px;
+    margin: 0 15px 0 0px;
+    /* color: #181717; */
+    color: rgb(85, 84, 84);
+  }

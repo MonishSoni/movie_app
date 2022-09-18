@@ -1,7 +1,7 @@
-import React from "react";
-import { CssBaseline } from "@mui/material";
-import { Routes, Route } from "react-router-dom";
-import useStyles from "./styles";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
+import useStyles from './styles';
 import {
   Actors,
   Profile,
@@ -9,7 +9,7 @@ import {
   Movies,
   Actorinformation,
   Movieinformation,
-} from "./index";
+} from './index';
 
 const App = () => {
   const classes = useStyles();
@@ -27,7 +27,7 @@ const App = () => {
               <Route path="/actor/:id" element={<Actorinformation />} />
               <Route path="/actor" element={<Actors />} />
               <Route path="/profile/:id" element={<Profile />} />
-              <Route path="/" element={<h1>Movies</h1>} />
+              <Route path="/" element={<Movies/>} />
             </Routes>
           </main>
         </CssBaseline>
