@@ -33,7 +33,6 @@ const Navbar = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  console.log(user)
 
   useEffect(() => {
     const logInUser = async () => {
