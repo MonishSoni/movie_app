@@ -34,10 +34,27 @@ export default makeStyles((theme) => ({
   gimage: {
     color: "rgb(25, 118, 210)",
   },
+
+  castimage: {
+    width: "100%",
+    maxWidth: "7em",
+    height: "8em",
+    borderRadius: "8px",
+    objectFit: "cover",
+  },
+  btncon: {
+    display: "flex",
+    justifyContent:'space-between',
+    width:'100%',
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
   poster: {
     borderRadius: "15px",
     boxShadow: "0 0 6px rgba(64,64,70,0.4)",
     width: "80%",
+    height: "450px",
     [theme.breakpoints.down("md")]: {
       margin: "0 auto",
       width: "50%",

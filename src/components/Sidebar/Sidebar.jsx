@@ -60,7 +60,7 @@ const Sidebar = ({ setMobileOpen }) => {
             <List>
                 <ListSubheader>Categories</ListSubheader>
                 {categories.map(({ label, value, icon }) => (
-                    <Link key={value} className={classes.links} to="/">
+                    <Link key={value} className={classes.links} to="/" onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}>
                         <ListItem onClick={() => dispatch(selectGenreCategory(value))} button>
                             <ListItemIcon>
                                 <ion-icon name={icon}></ion-icon>
@@ -79,7 +79,7 @@ const Sidebar = ({ setMobileOpen }) => {
                 {isFetching ? (<Box display='flex' justifyContent="center">
                     <CircularProgress />
                 </Box>) : data.genres.map(({ name, id }) => (
-                    <Link key={name} className={classes.links} to="/">
+                    <Link key={name} className={classes.links} to="/" onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}>
                         <ListItem onClick={() => dispatch(selectGenreCategory(id))} button>
                             <ListItemIcon>
                                 <ion-icon name={genreIcons[id]}></ion-icon>

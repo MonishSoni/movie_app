@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal, Typography, Button, ButtonGroup, Grid, Box, CircularProgress, useMediaQuery, Rating } from '@mui/material'
-import { Movie as MovieIcon, Theaters, Language, PlusOne, Favorite, FavoriteBorderOutlined, Remove, ArrowBack } from '@mui/material'
+import { Movie as MovieIcon, Theaters, Language, PlusOne, Favorite, FavoriteBorderOutlined, Remove, ArrowBack } from '@mui/icons-material'
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,8 +38,20 @@ const Movieinformation = () => {
   const classes = useStyles();
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
-
+  const isFav = false;
+  const isWatch = false;
   const dispatch = useDispatch();
+
+  console.log(data)
+
+  const addtoFav = () => {
+
+  }
+
+
+  const addtoWatch = () => {
+
+  }
 
   if (isFetching) {
     return (
@@ -82,6 +94,43 @@ const Movieinformation = () => {
                 <Typography color='textPrimary' variant='subtitle1'>{genre?.name}</Typography>
               </Link>
             ))}
+          </Grid>
+
+          <Typography variant="h6" gutterBottom style={{ marginTop: "10px" }}>Overview</Typography>
+          <Typography style={{ marginBottom: "1rem" }}>{data?.overview}</Typography>
+          <Typography variant='h6' gutterBottom >Top Cast</Typography>
+
+          <Grid item container spacing={2}>
+            {data && data.credits?.cast?.map((char, i) => (
+              char.profile_path && (<Grid key={i} item xs={4} md={2} component={Link} to={`/actor/${char.id}`} style={{ textDecoration: 'none' }}>
+                <img src={`https://image.tmdb.org/t/p/w500/${char.profile_path}`} className={classes.castimage} alt={char.name} />
+                <Typography color="textPrimary">{char?.name}</Typography>
+                <Typography color="textSecondary">{char?.character.split('/')[0]}</Typography>
+              </Grid>)
+            )).slice(0, 6)}
+          </Grid>
+          <Grid item container style={{ marginTop: '2rem' }}>
+            <div className={classes.btncon}>
+              <Grid item xs={12} sm={6} className={classes.btncon} >
+                <ButtonGroup size="small" variant="outlined">
+                  <Button target="_blank" rel="noopener noreferrer" href={data?.homepage} endIcon={<Language />}>Website</Button>
+                  <Button target="_blank" rel="noopener noreferrer" href={`https://www.imdb.com/title/${data?.imdb_id}`} endIcon={<MovieIcon />}>IMDB</Button>
+                  <Button onClick={() => { }} href="#" endIcon={<Theaters />}>Trailer</Button>
+                </ButtonGroup>
+              </Grid>
+
+              <Grid item xs={12} sm={6} className={classes.btncon} >
+                <ButtonGroup size="small" variant="outlined">
+                  <Button onClick={addtoFav} href="#" endIcon={isFav ? <FavoriteBorderOutlined /> : <Favorite />}>{isFav ? "Unfavorite" : "Favorite"}</Button>
+                  <Button style={{ borderRadius:'0px', borderRight:'0px' }}  onClick={addtoWatch} href="#" endIcon={isFav ? <Remove /> : <PlusOne />}>Watchlist</Button>
+                  <Button style={{ borderRadius:'0px 4px 4px 0px' }}  endIcon={<ArrowBack />}>
+                    <Typography style={{ textDecoration: "none"}}
+                      component={Link} to="/" color='inherit' variant='subtitle2'>back</Typography>
+                  </Button>
+
+                </ButtonGroup>
+              </Grid>
+            </div>
           </Grid>
         </Grid>
       </Grid>
