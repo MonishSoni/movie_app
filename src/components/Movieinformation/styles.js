@@ -53,8 +53,12 @@ export default makeStyles((theme) => ({
   poster: {
     borderRadius: "15px",
     boxShadow: "0 0 6px rgba(64,64,70,0.4)",
-    width: "80%",
-    height: "450px",
+    width: "90%",
+    height:'550px',
+    [theme.breakpoints.down("lg")]:{
+      width: "50%",
+      marginBottom: "15px",
+    },
     [theme.breakpoints.down("md")]: {
       margin: "0 auto",
       width: "50%",

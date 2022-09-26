@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import useStyles from './styles';
 import {
-  Actors,
   Profile,
   Navbar,
   Movies,
@@ -25,7 +24,6 @@ const App = () => {
               <Route path="/movie/:id" element={<Movieinformation />} />
               <Route path="/movie" element={<Movies />} />
               <Route path="/actor/:id" element={<Actorinformation />} />
-              <Route path="/actor" element={<Actors />} />
               <Route path="/profile/:id" element={<Profile />} />
               <Route path="/" element={<Movies/>} />
             </Routes>

@@ -4,16 +4,16 @@ import useStyles from "./styles"
 import Movie from '../Movie/Movie';
 
 
-const Movielist = ({ movies }) => {
+const Movielist = ({ movies, numberofMovies }) => {
 
     const classes = useStyles();
 
     return (
         <Grid container className={classes.movieContainer}>
 
-           {movies.results.map((movie,i)=>(
-            <Movie key={i} movie={movie} i={i}/>
-           ))}
+            {movies.results.slice(0, numberofMovies).map((movie, i) => (
+                <Movie key={i} movie={movie} i={i} />
+            ))}
 
         </Grid>
     )

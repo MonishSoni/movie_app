@@ -4,8 +4,9 @@ import { Movie as MovieIcon, Theaters, Language, PlusOne, Favorite, FavoriteBord
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetMovieQuery } from '../../services/tmdb';
-import useStyles from "./styles"
+import { useGetMovieQuery, useGetRecommendationQuery } from '../../services/tmdb';
+import useStyles from "./styles";
+import { Movielist } from "../";
 
 
 import { selectGenreCategory } from '../../features/currentCategory';
@@ -38,11 +39,12 @@ const Movieinformation = () => {
   const classes = useStyles();
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
+  const { data: recm, isFetching: recmfetch } = useGetRecommendationQuery({ list: '/recommendations', movie_id: id });
   const isFav = false;
   const isWatch = false;
   const dispatch = useDispatch();
 
-  console.log(data)
+
 
   const addtoFav = () => {
 
@@ -122,9 +124,9 @@ const Movieinformation = () => {
               <Grid item xs={12} sm={6} className={classes.btncon} >
                 <ButtonGroup size="small" variant="outlined">
                   <Button onClick={addtoFav} href="#" endIcon={isFav ? <FavoriteBorderOutlined /> : <Favorite />}>{isFav ? "Unfavorite" : "Favorite"}</Button>
-                  <Button style={{ borderRadius:'0px', borderRight:'0px' }}  onClick={addtoWatch} href="#" endIcon={isFav ? <Remove /> : <PlusOne />}>Watchlist</Button>
-                  <Button style={{ borderRadius:'0px 4px 4px 0px' }}  endIcon={<ArrowBack />}>
-                    <Typography style={{ textDecoration: "none"}}
+                  <Button style={{ borderRadius: '0px', borderRight: '0px' }} onClick={addtoWatch} href="#" endIcon={isFav ? <Remove /> : <PlusOne />}>Watchlist</Button>
+                  <Button style={{ borderRadius: '0px 4px 4px 0px' }} endIcon={<ArrowBack />}>
+                    <Typography style={{ textDecoration: "none" }}
                       component={Link} to="/" color='inherit' variant='subtitle2'>back</Typography>
                   </Button>
 
@@ -133,6 +135,10 @@ const Movieinformation = () => {
             </div>
           </Grid>
         </Grid>
+        <Box marginTop="5rem" width="100%">
+          <Typography variant="h5" gutterBottom align="center">You might also like</Typography>
+          {recm ? <Movielist movies={recm} numberofMovies={12} /> : <Box>Sorry, nothing was found</Box>}
+        </Box>
       </Grid>
     </>
   )
