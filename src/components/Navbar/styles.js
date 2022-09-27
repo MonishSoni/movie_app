@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
     marginLeft: "240px",
     [theme.breakpoints.down("sm")]: {
       marginLeft: "0",
-      flexWrap: "wrap",
+      flexWrap: "nowrap",
     },
   },
 

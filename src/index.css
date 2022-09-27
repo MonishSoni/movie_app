@@ -5,3 +5,19 @@ ion-icon {
     /* color: #181717; */
     color: rgb(85, 84, 84);
   }
+
+  ::-webkit-scrollbar{
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-track{
+    background:#cfcfcf;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background:#a5a5a5;
+  }
+
+  *{
+    text-decoration: none;
+  }

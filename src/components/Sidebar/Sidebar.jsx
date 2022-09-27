@@ -49,11 +49,11 @@ const Sidebar = ({ setMobileOpen }) => {
     return (
         <>
             {/* logo color change */}
-            <Link to="/" className={classes.imageLink}>
+            <Link to="/" onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)} className={classes.imageLink}>
                 {/* <img className={classes.image} src={theme.palette.mode === 'light' ? "filmyred" : "filmyblue" } />
                 */}
 
-                <p className={classes.image} >{theme.palette.mode === 'light' ? "LightMode" : "DarkMode"} </p>
+                <p className={classes.image} >Moviehub</p>
             </Link>
 
             <Divider />

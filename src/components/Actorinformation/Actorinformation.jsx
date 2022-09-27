@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Typography, Button, Grid, Box, CircularProgress } from '@mui/material'
 import { ArrowBack, SortByAlphaRounded } from '@mui/icons-material';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -6,14 +6,14 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetActorQuery, useGetActormovQuery } from '../../services/tmdb';
 import useStyles from "./styles";
-import { Movielist } from "../";
+import { Movielist,Pagination } from "../";
 
 
 const Actorinformation = () => {
   const navigate = useNavigate();
   const classes = useStyles();
   const { id } = useParams();
-  const page = 1;
+   const [page, setPage] = useState(1);
   const { data, isFetching, error } = useGetActorQuery(id);
   const { data: movies} = useGetActormovQuery({ id, page });
 
@@ -56,7 +56,9 @@ const Actorinformation = () => {
         <Box margin="2rem 0">
           <Typography variant="h4" gutterBottom align="center">Movies</Typography>
           {movies && <Movielist movies={movies} numberofMovies={12}/>}
+          <Pagination currentPage={page} setPage={setPage} totalPages={movies?.total_pages} />
         </Box>
+
       </Box>
     </>
   )

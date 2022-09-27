@@ -5,6 +5,7 @@ import { useGetMoviesQuery } from '../../services/tmdb';
 import Movielist from '../Movielist/Movielist';
 
 import { selectGenreCategory } from '../../features/currentCategory';
+import {Pagination} from "../"
 
 const Movies = () => {
 
@@ -34,6 +35,7 @@ const Movies = () => {
   return (
     <div>
       <Movielist movies={data} />
+      <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
     </div>
   )
 }

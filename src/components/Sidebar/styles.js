@@ -1,15 +1,22 @@
 import { makeStyles } from "@mui/styles";
+import { padding } from "@mui/system";
 
 export default makeStyles((theme) => ({
   imageLink: {
     display:'flex',
     justifyContent:'center',
-    padding:'10% 0',
-    textDecoration:'none'
+    padding:'5px 0',
+    textDecoration:'none',
+    alignItems:'center'
   },
 
   image:{
-    width:'70%',
+    fontWeight:'900',
+    color:'#1976D2',
+    fontSize:'32px',
+    letterSpacing:'1px',
+    margin:'15px 0',
+    fontFamily: "'Acme', sans-serif"
   },
 
   links:{

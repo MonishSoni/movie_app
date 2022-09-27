@@ -64,16 +64,14 @@ const Navbar = () => {
         <Toolbar className={classes.toolbar}>
           {isMobile && (
             <IconButton color="inherit" edge="start" style={{ outline: 'none' }} onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)} className={classes.menuButton}>
-              <Menu />
+              <Menu style={{ fontSize: '28px' }}  />
             </IconButton>
           )}
 
-          <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => { }} >
-            {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
-          </IconButton>
+          <div></div>
 
-          {!isMobile && <Search />}
-
+          
+           <Search />
           <div>
             {!isAuthenticated ? (
               <Button color="inherit" onClick={fetchToken}>Login &nbsp; <AccountCircle /> </Button>
@@ -82,7 +80,7 @@ const Navbar = () => {
                 <Avatar style={{ width: '30px', height: '30px' }} alt='profile' src={`https://www.themoviedb.org/t/p/w64_and_h64_face${user?.avatar?.tmdb?.avatar_path}`} /> </Button>
             )}
           </div>
-          {isMobile && <Search />}
+          
         </Toolbar>
       </AppBar>
 
