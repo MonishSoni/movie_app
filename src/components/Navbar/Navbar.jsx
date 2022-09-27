@@ -74,7 +74,7 @@ const Navbar = () => {
            <Search />
           <div>
             {!isAuthenticated ? (
-              <Button color="inherit" onClick={fetchToken}>Login &nbsp; <AccountCircle /> </Button>
+              <Button color="inherit" onClick={fetchToken}>Login&nbsp; <AccountCircle /> </Button>
             ) : (
               <Button color="inherit" component={Link} to={`/profile/${user.id}`} className={classes.linkButton} onClick={() => { }}>{!isMobile && <>My Movies &nbsp; </>}
                 <Avatar style={{ width: '30px', height: '30px' }} alt='profile' src={`https://www.themoviedb.org/t/p/w64_and_h64_face${user?.avatar?.tmdb?.avatar_path}`} /> </Button>
