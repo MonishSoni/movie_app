@@ -50,7 +50,7 @@ const Movieinformation = () => {
   const tmdbApikey = process.env.REACT_APP_TMDB_KEY;
   const dispatch = useDispatch();
 
-  console.log(data)
+ 
 
   useEffect(() => {
     setFav(!!favmov?.results?.find((movie) => movie?.id === data?.id));
@@ -144,7 +144,7 @@ const Movieinformation = () => {
                 <ButtonGroup size="small" variant="outlined">
                   <Button target="_blank" rel="noopener noreferrer" href={data?.homepage} endIcon={<Language />}>Website</Button>
                   <Button target="_blank" rel="noopener noreferrer" href={`https://www.imdb.com/title/${data?.imdb_id}`} endIcon={<MovieIcon />}>IMDB</Button>
-                  <Button target="_blank" href={`https://www.youtube.com/watch?v=${data?.videos?.results[1].key}`} endIcon={<Theaters />}>Trailer</Button>
+                  <Button target="_blank" href={`https://www.youtube.com/watch?v=${data?.videos?.results[0].key}`} endIcon={<Theaters />}>Trailer</Button>
                 </ButtonGroup>
               </Grid>
 
